@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'androidx.core:core-ktx:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testApi 'junit:junit:4.12'
+    androidTestApi 'androidx.test.ext:junit:1.1.1'
+    androidTestApi 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Retrofit
+    api("com.squareup.retrofit2:retrofit:2.6.0") {
+        exclude module: 'okhttp'
+    }
+    api "com.squareup.retrofit2:converter-gson:2.6.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
+    api "ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0"
+
+    //RxJava2
+    api "io.reactivex.rxjava2:rxandroid:2.1.1"
+    api "io.reactivex.rxjava2:rxjava:2.2.10"
+
+    // Okhttp
+    api "com.squareup.okhttp3:okhttp:4.2.2"
+    api "com.squareup.okhttp3:logging-interceptor:4.2.2"
+
+    //ARouter
+    api "com.alibaba:arouter-api:1.5.0"
+    kapt "com.alibaba:arouter-compiler:1.2.2"
+
+    // Glide
+    api "com.github.bumptech.glide:glide:4.11.0"
+    api('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+        exclude group: 'glide-parent'
+    }
+
+    //协程
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+
+    api "com.google.android.material:material:1.0.0"
+
+    // Google Flexbox
+    api 'com.google.android:flexbox:2.0.1'
+
+    //ViewModel
+    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha01"
+
+    api "androidx.room:room-runtime:2.2.3"
+    kapt  "androidx.room:room-compiler:2.2.3"
+}

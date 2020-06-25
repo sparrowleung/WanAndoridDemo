@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DemoMode</string>
+    <string name="article_fresh">最新</string>
+    <string name="article_local">本站发布</string>
+    <string name="article_top">置顶</string>
+    <string name="article_author">作者</string>
+    <string name="article_share">分享人</string>
+    <string name="network_error">网络请求出现错误!</string>
+    <string name="system_title">- %1$s -</string>
+    <string name="search_hint">搜索内容</string>
+    <string name="search">搜索</string>
+    <string name="search_tips">大家都在搜</string>
+    <string name="search_history">历史记录</string>
+    <string name="search_detail">搜索详情</string>
+</resources>

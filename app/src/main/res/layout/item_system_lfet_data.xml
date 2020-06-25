@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="androidx.core.text.HtmlCompat" />
+
+        <variable
+            name="systemLeftBean"
+            type="com.learning.common.bean.SystemCategoryBean" />
+
+        <variable
+            name="viewModel"
+            type="com.learning.demomode.system.SystemViewModel" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/system_first_txt"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:background="@drawable/system_item_select_background"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:maxLines="2"
+            android:onClick="@{()->viewModel.onClickOfLeft(pos)}"
+            android:singleLine="false"
+            android:text="@{HtmlCompat.fromHtml(systemLeftBean.name, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()}"
+            android:textColor="@drawable/system_item_select_color" />
+
+    </LinearLayout>
+</layout>
